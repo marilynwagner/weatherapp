@@ -5,22 +5,21 @@ angular.module('weather')
       var cache = {};
       
       function getForecastFromCache() {
-        if (lastAccess === null) {
-          lastAccess = new Date();
+        if (lastAccess === null) {  // this means first time in
+          lastAccess = new Date();  // current Date and Time
           //return mockRetrieve();
           return retrieveFreshData();
         }
-        else {
-          var now = new Date();
-          var timeDiffInSeconds = (now.getTime() - lastAccess.getTime())/1000;
-          lastAccess = new Date();
+        else {  // if we are in here, we have data in cache and lastAcess is a valid time
+          var now = new Date();   // current time
+          var timeDiffInSeconds = (now.getTime() - lastAccess.getTime())/1000;  // subtract times, get difference in milliseconds, divide by 1000 to get seconds
           if (timeDiffInSeconds > 600) {
+            lastAccess = new Date();
             //return mockRetrieve();
             return retrieveFreshData();
           }
-          else {
-            var deferred = $q.defer();
-            cache.data.message = cache.data.message + 1;
+          else {    // in this case, we want to simply return cache.data, but we must wrap it with a promise so that we are consistent with the other cases
+            var deferred = $q.defer();  
             setTimeout(function() {
               deferred.resolve(cache.data);
             }, 0);
@@ -89,7 +88,7 @@ angular.module('weather')
         $http.get('http://api.openweathermap.org/data/2.5/forecast?id=5746545&APPID='+apikey).then(
           function(result) {
             cache.data = result.data;  // leave the value in the cache, besides feeding it into deferred.resolve
-            deferred.resolve(cache.data);
+            deferred.resolve(result.data);
           },
           function(error) {
             // error case
