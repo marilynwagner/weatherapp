@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font: 14px/1.4 Georgia, Serif;
+    background: #7A95E6;
+}
+
+#page-wrap {
+    margin: 50px;
+}
+
+p {
+    margin: 20px 0;
+}
+
+/* TABLE 1 SETTINGS */
+.table1 {
+    border-collapse: collapse;
+}
+
+/* Zebra striping odd rows */
+.table1 tr:nth-of-type(odd) {
+    background: #eee;
+    border: 1px solid black;
+}
+
+/* Zebra striping even rows */
+.table1 tr:nth-of-type(even) {
+    background: white;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.table1 th:nth-of-type(even) {
+    background: white;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.table1 td, th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+/* TABLE 2 SETTINGS */
+.table2 {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Zebra striping odd rows */
+.table2 tr:nth-of-type(odd) {
+    background: #eee;
+    border: 1px solid black;
+}
+
+/* Zebra striping even rows */
+.table2 tr:nth-of-type(even) {
+    background: white;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.table2 th {
+    background: #1B258A;
+    color: white;
+    font-weight: bold;
+}
+
+.table2 td, th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+}

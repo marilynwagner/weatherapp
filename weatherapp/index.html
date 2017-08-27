@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marilyn's Weather App</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="app.css">
+
+    <!--Library Scripts  -->
+    <!--AngularJS script goes here-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+
+    <!--Application Script -->
+    <script src="my.js"></script>
+    <script src="weatherService.js"></script>
+    <script src="weatherServiceMock.js"></script>
+
+    <style>
+
+        /* This query will take effect for any screen smaller than 760px and also iPads specifically. */
+        @media only screen and (max-width: 760px),
+        (min-device-width: 768px) and (max-device-width: 1024px)  {
+
+            /* Force table to not be like tables any more */
+            .table2 thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            /* Hide table headers (but not display: none;, for accessibility) */
+            .table2 thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            .table2 tr { border: 1px solid #ccc; }
+
+            .table2 td {
+                /* Behave  like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+            }
+
+            .table2 td:before {
+                /* Now like a table header */
+                position: absolute;
+                /* Top/left values mimic padding */
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+            }
+
+            /* Label the data */
+            .table2 td:nth-of-type(1):before { content: "Date/Time"; }
+            .table2 td:nth-of-type(2):before { content: "Temperature"; }
+            .table2 td:nth-of-type(3):before { content: "Cloudiness"; }
+            .table2 td:nth-of-type(4):before { content: "Wind Speed"; }
+            .table2 td:nth-of-type(5):before { content: "Pressure"; }
+            .table2 td:nth-of-type(6):before { content: "Humidity"; }
+        }
+
+        /* Smart phones (portrait and landscape) */
+        @media only screen
+        and (min-device-width : 320px)
+        and (max-device-width : 480px) {
+            body {
+                padding: 0;
+                margin: 0;
+                width: 320px; }
+        }
+
+        /* iPads (portrait and landscape) */
+        @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+            body {
+                width: 495px;
+            }
+        }
+
+    </style>
+</head>
+<body ng-app='weather' ng-controller='weatherCtrl'>
+    <div id="page-wrap">
+        <header>
+            <h1>Marilyn's Weather Predictions</h1><br>
+            <p><img src="https://openclipart.org/download/158443/kawaiirainbow.svg" width="400"></p>
+
+        </header>
+        
+        <h1><a href="" ng-click="loadWeather()">Load weather for Portland</a></h1><br><br>
+
+        <main>
+            <h2>Current Weather</h2>
+            <p><b>{{weatherResults[0].datetime}}</b></p>
+            <span><img alt="clear sky" src="http://openweathermap.org/img/w/02d.png"><b>{{weatherResults[0].temp}} F</b></span>
+            <p><b>{{weatherResults[0].condition}}</b></p>
+            
+
+            <table class="table1">
+                <tr>
+                    <th>Cloudiness</th>
+                    <td>{{weatherResults[0].condition}}</td>
+                </tr>
+                <tr>
+                    <th>Wind Speed</th>
+                    <td>{{weatherResults[0].windspeed}} m/s</td>
+                </tr>
+                <tr>
+                    <th>Pressure</th>
+                    <td>{{weatherResults[0].pressure}} hpa</td>
+                </tr>
+                <tr>
+                    <th>Humidity</th>
+                    <td>{{weatherResults[0].humidity}}%</td>
+                </tr>
+            </table><br> <br>
+
+            <h2>Five Day Forecast</h2><br>
+
+            <table class="table2">
+                <thead>
+                <tr>
+                    <th>Date/Time</th>
+                    <th>Temperature</th>
+                    <th>Cloudiness</th>
+                    <th>Wind Speed</th>
+                    <th>Pressure</th>
+                    <th>Humidity</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="result in weatherResults">
+                    <td>{{result.datetime}}</td>
+                    <td>{{result.temp}} F</td>
+                    <td><img alt="clear sky" src="http://openweathermap.org/img/w/02d.png"> {{result.condition}}</td>
+                    <td>{{result.windspeed}} m/s</td>
+                    <td>{{result.pressure}} hpa</td>
+                    <td>{{result.humidity}}%</td>
+                </tr>
+                </tbody>
+            </table>
+        </main>
+
+        <footer>
+            <br>
+            <b>Marilyn Wagner &copy; 2017</b>
+        </footer>
+
+    </div>
+</body>
+</html>
+
+<!-- IMAGES  -->
+<!--<img alt="clear sky" src="http://openweathermap.org/img/w/02d.png">
+<img alt="broken clouds" src="http://openweathermap.org/img/w/04d.png">
+<img alt="clear sky" src="http://openweathermap.org/img/w/02n.png">
+<img alt="scattered clouds" src="http://openweathermap.org/img/w/03n.png">
+<img alt="clear sky" src="http://openweathermap.org/img/w/01d.png">
+<img src="http://openweathermap.org/img/w/10d.png" alt="forecast">-->
