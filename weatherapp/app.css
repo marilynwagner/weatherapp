@@ -18,6 +18,7 @@ p {
 
 /* TABLE 1 SETTINGS */
 .table1 {
+    width: 50%;
     border-collapse: collapse;
 }
 
