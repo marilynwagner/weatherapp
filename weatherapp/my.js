@@ -2,11 +2,13 @@ angular.module('weather', [])
   .controller("weatherCtrl", ['$scope', 'weatherService', 'weatherServiceMock',
     function($scope, weatherSvc, weatherSvcMock) {
       $scope.weatherResults = [];
-      
+      $scope.visible = false;
+      $scope.message;
       $scope.loadWeather = function() {
         weatherSvc.getForecast().then(
           function(data) {
-            $scope.message = data.message;
+           $scope.visible = true;
+           $scope.message = data.message;
             parseData(data);
           },
           function(error) {
