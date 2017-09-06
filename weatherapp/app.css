@@ -5,7 +5,7 @@
 
 body {
     font: 14px/1.4 Georgia, Serif;
-    background: #7A95E6;
+    background: #4674A6;
 }
 
 #page-wrap {
@@ -14,6 +14,20 @@ body {
 
 p {
     margin: 20px 0;
+}
+
+.button {
+    background-color: #001664;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
 
 /* TABLE 1 SETTINGS */
