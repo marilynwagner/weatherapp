@@ -89,13 +89,11 @@
     <div id="page-wrap">
         <header>
             <h1>Marilyn's Weather Predictions</h1><br>
-            <p><img src="https://openclipart.org/download/158443/kawaiirainbow.svg" width="400"></p>
-
+            <p><img src="https://openclipart.org/download/255214/Low-Poly-Blue-Sky-5.svg" width="80%"></p>
+            <button class="button" ng-click="loadWeather()">View Weather for Portland, OR</button>
         </header>
-        
-        <h1><a href="" ng-click="loadWeather()">Load weather for Portland</a></h1><br><br>
 
-        <main>
+        <main ng-show="visible">
             <h2>Current Weather</h2>
             <p><b>{{weatherResults[0].datetime}}</b></p>
             <span><img alt="clear sky" src="http://openweathermap.org/img/w/02d.png"><b>{{weatherResults[0].temp}} F</b></span>
@@ -155,4 +153,3 @@
     </div>
 </body>
 </html>
-
